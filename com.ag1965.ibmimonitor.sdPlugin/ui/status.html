@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <title>IBM i Monitor Settings</title>
+    <meta charset="utf-8" />
+    <script src="../bin/sdpi-components.js"></script>
+</head>
+
+<body>
+    <!--
+        Learn more about property inspector components at https://sdpi-components.dev/docs/components
+    -->
+    <sdpi-item label="Webservice URL" description="The URL of the IBM i Monitor webservice.">
+        <sdpi-textfield setting="webserviceUrl" placeholder="https://myibmi:port/monitor"></sdpi-textfield>
+    </sdpi-item>
+    <sdpi-item label="Interval (sec)" description="The interval in seconds at which the monitor will fetch data from the webservice.">
+        <sdpi-textfield setting="interval" placeholder="30" type="number"></sdpi-textfield>
+    </sdpi-item>
+    <sdpi-item label="ASP usage threshold orange" description="The percentage of used ASP that will trigger the orange background.">
+        <sdpi-textfield setting="threshold_warn" placeholder="80" type="number"></sdpi-textfield>
+    </sdpi-item>
+    <sdpi-item label="ASP usage threshold red" description="The percentage of used ASP that will trigger the red background.">
+        <sdpi-textfield setting="threshold_alert" placeholder="90" type="number"></sdpi-textfield>
+    </sdpi-item>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+{
+	"Name": "IBM i Monitor",
+	"Version": "0.1.0.0",
+	"Author": "Anton Gombkötö",
+	"Actions": [
+		{
+			"Name": "Status",
+			"UUID": "com.ag1965.ibmimonitor.status",
+			"Icon": "imgs/actions/counter/icon",
+			"Tooltip": "Polls IBM i monitor JSON and displays ASP and MSGW status.",
+			"PropertyInspectorPath": "ui/status.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/status/grey",
+					"TitleAlignment": "middle"
+				}
+			]
+		}
+	],
+	"Category": "IBM i Monitor",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"CodePath": "bin/plugin.js",
+	"Description": "Display Disk % and alert when a MSGW occurs",
+	"Icon": "imgs/plugin/marketplace",
+	"SDKVersion": 3,
+	"Software": {
+		"MinimumVersion": "7.1"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "12"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "24",
+		"Debug": "enabled"
+	},
+	"UUID": "com.ag1965.ibmimonitor"
+}
