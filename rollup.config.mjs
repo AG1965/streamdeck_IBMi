@@ -6,7 +6,7 @@ import path from "node:path";
 import url from "node:url";
 
 const isWatching = !!process.env.ROLLUP_WATCH;
-const sdPlugin = "com.ag1965.ibmimonitor.sdPlugin";
+const sdPlugin = "dev.agomb.ibmimonitor.sdPlugin";
 
 /**
  * @type {import('rollup').RollupOptions}

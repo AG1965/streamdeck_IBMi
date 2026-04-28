@@ -5,8 +5,8 @@
 	"Actions": [
 		{
 			"Name": "Status",
-			"UUID": "com.ag1965.ibmimonitor.status",
-			"Icon": "imgs/actions/counter/icon",
+			"UUID": "dev.agomb.ibmimonitor.status",
+			"Icon": "imgs/actions/status/grey",
 			"Tooltip": "Polls IBM i monitor JSON and displays ASP and MSGW status.",
 			"PropertyInspectorPath": "ui/status.html",
 			"Controllers": [
@@ -43,5 +43,5 @@
 		"Version": "24",
 		"Debug": "enabled"
 	},
-	"UUID": "com.ag1965.ibmimonitor"
+	"UUID": "dev.agomb.ibmimonitor"
 }

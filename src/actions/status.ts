@@ -53,7 +53,9 @@ const STATE_COLORS: Record<RenderState, string> = {
 	grey: "#6c757d"
 };
 
-@action({ UUID: "com.ag1965.ibmimonitor.status" })
+
+
+@action({ UUID: "dev.agomb.ibmimonitor.status" })
 export class StatusMonitorAction extends SingletonAction<StatusSettings> {
 	private readonly monitors = new Map<string, MonitorInstance>();
 

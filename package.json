@@ -1,7 +1,7 @@
 {
     "scripts": {
         "build": "rollup -c",
-        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.ag1965.ibmimonitor\""
+        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart dev.agomb.ibmimonitor\""
     },
     "type": "module",
     "devDependencies": {
