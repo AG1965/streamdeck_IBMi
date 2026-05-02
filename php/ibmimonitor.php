@@ -16,7 +16,7 @@ if (!isset($response['error'])) {
 
     // query the database for the ASP usage percentage, and add it to the response. 
     // If there is an error, add the error message to the response instead.
-    $sql = 'SELECT SYSTEM_ASP_USED ASP_USED FROM QSYS2.SYSTEM_STATUS_INFO';
+    $sql = 'SELECT HOST_NAME LPAR, SYSTEM_ASP_USED ASP_USED FROM QSYS2.SYSTEM_STATUS_INFO';
 
 	$stmt = db2_prepare($conn, $sql);
 	if (!$stmt) {
@@ -30,6 +30,7 @@ if (!isset($response['error'])) {
             if (!$row) {
                 $response['error'] = db2_stmt_error().' '.db2_stmt_errormsg() . ' in ' . $sql;
             } else {
+                $response['LPAR'] = $row['LPAR'];
                 $response['ASP_USED'] = $row['ASP_USED'];
             }
         }
