@@ -22,6 +22,7 @@ $response['ASP_USED'] =  rand(50,95) . '.' . rand(00,99);
 $response['JOBS_IN_MSGW'] = $jobs_in_msgw;
 
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
 echo json_encode($response);
 
 ?>

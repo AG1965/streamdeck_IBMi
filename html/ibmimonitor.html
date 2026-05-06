@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>IBM i LPAR Monitor</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #fff;
+    margin: 0;
+    padding: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.tile {
+    border-radius: 10px;
+    padding: 10px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Farben */
+.green { background: #2ecc71; }
+.orange { background: #f39c12; }
+.red { background: #e74c3c; }
+.gray { background: #555; }
+
+/* Blinken nur für MSGW */
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.4; }
+}
+
+.title {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.small {
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const endpoints = [
+    "https://yourfirsti/ibmimonitor.php",
+    "https://yoursecondi/ibmimonitor.php",
+    "https://yourthirdi/ibmimonitor.php",
+    // ...
+];
+
+// Grid initial füllen (Platzhalter)
+const grid = document.getElementById("grid");
+grid.innerHTML = endpoints.map((_, i) => `
+    <div class="tile gray" id="tile-${i}">
+        <div class="title">...</div>
+        <div class="center">INIT</div>
+    </div>
+`).join("");
+
+function timeoutFetch(url, timeout = 5000) {
+    return Promise.race([
+        fetch(url).then(r => r.json()),
+        new Promise((_, reject) =>
+            setTimeout(() => reject(new Error("timeout")), timeout)
+        )
+    ]);
+}
+
+function getColor(data) {
+    if (data.JOBS_IN_MSGW && data.JOBS_IN_MSGW.length > 0) {
+        return "red";
+    }
+
+    const asp = parseFloat(data.ASP_USED);
+
+    if (asp > 90) return "red";
+    if (asp > 80) return "orange";
+    return "green";
+}
+
+function renderTile(data) {
+    let color = "gray";
+    let extraClass = "";
+    let content = "";
+
+    if (!data || data.error) {
+        content = `<div class="center">NO DATA</div>`;
+    } else {
+        color = getColor(data);
+
+        if (data.JOBS_IN_MSGW && data.JOBS_IN_MSGW.length > 0) {
+            extraClass = "blink";
+
+            const jobs = data.JOBS_IN_MSGW;
+            const first = jobs[0].JOB;
+            const extra = jobs.length > 1 ? `+${jobs.length - 1}` : "";
+
+            content = `
+                <div class="center">MSGW</div>
+                <div class="small">${first} ${extra}</div>
+            `;
+        } else {
+            content = `<div class="center">${data.ASP_USED}%</div>`;
+        }
+    }
+
+    return `
+        <div class="tile ${color} ${extraClass}">
+            <div class="title">${data?.LPAR || "UNKNOWN"}</div>
+            ${content}
+        </div>
+    `;
+}
+
+async function updateTile(url, index) {
+    const el = document.getElementById(`tile-${index}`);
+
+    try {
+        const data = await timeoutFetch(url, 5000);
+        el.outerHTML = `<div id="tile-${index}">${renderTile(data)}</div>`;
+    } catch (e) {
+        el.outerHTML = `<div id="tile-${index}">${renderTile({ error: true })}</div>`;
+    }
+}
+
+function updateAll() {
+    endpoints.forEach((url, i) => {
+        updateTile(url, i); // KEIN await → komplett unabhängig
+    });
+}
+
+// initial + polling
+updateAll();
+setInterval(updateAll, 15000);
+</script>
+
+</body>
+</html>
