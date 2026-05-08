@@ -50,5 +50,11 @@ Repeat the steps for as many buttons as you want to monitor different LPARs. You
 
 ## Web page using ibmimonitor_mockup
 
-You just have to open html/ibmimonitor.html and insert the URLs of the web service for the different LPARs in the array "endpoints". Open the page in your browser and you should see the status of the different LPARs.
-(That html page is 100% ChatGPT generated.)
+(file html/ibmimonitor.html is 100% ChatGPT generated and just a demo what you can easily achieve.)
+
+You just have to open html/ibmimonitor.html and insert the URLs of the web service for the different LPARs in the array "endpoints".
+
+![Editing the endpoint array in the html page.](pictures/editing_ibmimonitor.html "Editing the endpoint array in the html page")
+
+Open the page in your browser and you should see the status of the different LPARs.
+![Web page showing the status of 8 fake LPARs. 1 with rather high ASP usage, 2 where everything is OK and 5 partitions with jobs in MSGw.](pictures/sample_ibmimonitor.png "Web page showing the status of 8 fake LPARs")
