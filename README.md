@@ -18,7 +18,7 @@ In my case, no user authentication is required.
 
 If you want to test it with e.g. a Raspberry Pi, use the ibmimonitor_mockup.php file. It is generating random data for fake LPARs and accepts a system parameter for distinctive LPAR names.
 
-The JSON data provided by the web service should look like this:
+The JSON data provided by the web service should look like this (formatted for better readability, the actual output is minified):
 
 ```json
 {
