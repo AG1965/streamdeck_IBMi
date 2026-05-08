@@ -18,6 +18,26 @@ In my case, no user authentication is required.
 
 If you want to test it with e.g. a Raspberry Pi, use the ibmimonitor_mockup.php file. It is generating random data for fake LPARs and accepts a system parameter for distinctive LPAR names.
 
+The JSON data provided by the web service should look like this:
+
+```json
+{
+    "LPAR": "IDEFIX",
+    "ASP_USED": "84.01",
+    "JOBS_IN_MSGW": [
+        {
+            "JOB": "654321/ROMAN/CLAP01"
+        },
+        {
+            "JOB": "654322/ROMAN/CLAP02"
+        },
+        {
+            "JOB": "654323/ROMAN/CLAP03"
+        }
+    ]
+}
+```
+
 ## Plugin for Elagato's Stream Deck
 
 This plugin is retrieving JSON data from a web service running on an IBM i providing information about the system asp usage and jobs in message-wait status.
