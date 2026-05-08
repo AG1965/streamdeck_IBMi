@@ -44,9 +44,13 @@ This plugin is retrieving JSON data from a web service running on an IBM i provi
 
 ## Installation of the plugin (Windows)
 
-You can copy the folder dev.agomb.ibmimontor.sdPlugin to the Stream Deck plugins folder. The location of the plugins folder is usually:
+Clone the repo to your PC.
+
+Create a link to `path_of_the_cloned_repository/dev.agomb.ibmimontor.sdPlugin` in the Stream Deck plugins folder. The location of the plugins folder is usually:
 
 `%USERPROFILE%\AppData\Roaming\Elgato\StreamDeck\Plugins`
+
+You can also copy or move the directory `path_of_the_cloned_repository/dev.agomb.ibmimontor.sdPlugin` and everything below to the plugin directory and delete the rest of the cloned repo afterwards. This might be more practical if you do not plan to change or extend the plugin.
 
 ## Installation of the plugin (all other platforms)
 
