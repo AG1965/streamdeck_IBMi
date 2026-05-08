@@ -39,6 +39,13 @@ The plugin will then retrieve the data from the web service at the specified int
 
 ## Streamdeck using ibmimonitor_mockup
 
+![Configuration of the plugin in Elgato's Streamdeck software.](pictures/streamdeck_configuration.png "Configuration of the Stream Deck plugin")
+
+1. Drag the "Status" action to a button on the Stream Deck.
+2. Click on the button to open the configuration and fill in the URL of the webservice providing the JSON with the LPAR info.
+
+Repeat the steps for as many buttons as you want to monitor different LPARs. You can use the ibmimonitor_mockup.php file to test it with fake data.
+
 ![A Stream Deck with 6 keys displaying the status of 6 fake LPARs. 1 with rather high ASP usage, 3 where everything is OK and two partitions with jobs in MSGw](pictures/streamdeck_ibmimonitor.png "6 fake LPARs")
 
 ## Web page using ibmimonitor_mockup
